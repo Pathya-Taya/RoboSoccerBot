@@ -1,0 +1,29 @@
+#include<SoftwareSerial.h>
+SoftwareSerial HC12(10,11);
+int xpin=A3,ypin=A4;
+int xval,yval;
+int direc=0;
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  HC12.begin(9600);
+  pinMode(xpin,INPUT);
+  pinMode(ypin,INPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  xval=analogRead(ypin);    //cause joystick is held vertical
+  yval=analogRead(xpin);
+  if(yval>600)
+  direc=1;
+  else if(yval<400)
+  direc=2;
+  if(xval<400)
+  direc=3;
+  else if(xval>600)
+  direc=4;
+  if((xval<600 && xval>400) && (yval<600 && yval>400))
+  direc=0;
+  HC12.println(direc);
+}
