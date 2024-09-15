@@ -1,0 +1,83 @@
+#include<SoftwareSerial.h>
+#include<Stepper.h>
+Stepper motorl(200,1,2,3,4);
+Stepper motorr(200,8,9,10,11);
+SoftwareSerial HC12(5,6);   //tx,rx
+int copy,incomingval;
+int stepps=1,speeed=100;
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  HC12.begin(9600);
+}
+void loop() {
+  // put your main code here, to run repeatedly:
+    incomingval=HC12.parseInt();
+    if(incomingval<0 || incomingval>5)
+    incomingval=copy;
+    copy=incomingval;
+    switch(incomingval)
+    {
+      case 1:
+      {
+      forward();
+      break;
+      }
+      case 2:
+      {
+      backward();
+      break;
+      }
+      case 3:
+      {
+      left();
+      break;
+      }
+      case 4:
+      {
+      right();
+      break;
+      }
+      case 0:
+      {
+        digitalWrite(1,LOW);
+        digitalWrite(2,LOW);
+        digitalWrite(3,LOW);
+        digitalWrite(4,LOW);
+        digitalWrite(8,LOW);
+        digitalWrite(9,LOW);
+        digitalWrite(10,LOW);
+        digitalWrite(11,LOW);
+        break;
+      }
+    }
+    
+}
+void forward()
+{
+  motorr.setSpeed(speeed);
+  motorr.step(stepps);
+  motorl.setSpeed(speeed);
+  motorl.step(stepps);
+}
+void backward()
+{
+  motorl.setSpeed(speeed);
+  motorl.step(-stepps);
+  motorr.setSpeed(speeed);
+  motorr.step(-stepps);
+}
+void left()
+{
+  motorl.setSpeed(speeed);
+  motorl.step(-stepps);
+  motorr.setSpeed(speeed);
+  motorr.step(stepps);
+} 
+void right()
+{
+  motorl.setSpeed(speeed);
+  motorl.step(stepps);
+  motorr.setSpeed(speeed);
+  motorr.step(-stepps);
+}
