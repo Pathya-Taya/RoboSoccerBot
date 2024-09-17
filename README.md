@@ -1,6 +1,7 @@
 # RoboSoccerBot
 
-Welcome to the RoboSoccer Bot repository! This project involves creating a robot capable of playing soccer, with code provided for both the car (robot) and remote control functionalities. In this repository, you will find the following:
+Welcome to the RoboSoccer Bot repository! This project involves a heavyduty rc car I created for participating in Wisseniare '24 IIT BBS, with code I have provided code for both the car (robot) and remote control.
+In this repository, you will find the following:
 
 Car code: The code that controls the robot’s movements and actions.
 Remote code: The code for controlling the robot remotely.
