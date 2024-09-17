@@ -1,0 +1,10 @@
+2 HC-12 Modules: Used for serial communication between the robot and the remote control.
+4 NEMA 17 Stepper Motors: Used for locomotion of the robot.
+2 L298 driver module: For controlling the stepper motors.
+1 12V(1700 mAh) Battery: For powering the motors.
+2 9V Battery: For powering arduinos and HC-12 modules.
+2 Arduino Uno: One for car and one for remote.
+Joystick: For remote
+Metal Chassis, Wheels, Glue gun etc.
+(Optional) Breadboard and BreadBoard Powersupply: For stable 5v in HC-12 module.
+(A servo motor can also be added for shooting mechanism but that wasn't allowed in the competition)
